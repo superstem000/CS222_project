@@ -1,5 +1,5 @@
+This repository definitely has a README.md
 Fridge First
-Jayda
-Brian
-Namit
-
+Team 042
+Jayda Eiland, Brian Park, Namit Mehta, Andrew Wan
+Organize your food.
