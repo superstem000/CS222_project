@@ -7,7 +7,7 @@ import com.example.mealplannerapp.fridgefirst.data.RecipeBookRepository
 import com.example.mealplannerapp.fridgefirst.data.WeeklyPlanRepository
 import com.example.mealplannerapp.fridgefirst.data.plannedRecipes
 import com.example.mealplannerapp.fridgefirst.data.stock
-import com.example.mealplannerapp.fridgefirst.domain.KitchenCalculator
+import com.example.mealplannerapp.fridgefirst.domain.KitchenLogic
 import com.example.mealplannerapp.fridgefirst.domain.formatAmount
 import com.example.mealplannerapp.fridgefirst.ui.MessageHolder
 import com.example.mealplannerapp.fridgefirst.ui.UserMessage
@@ -41,7 +41,7 @@ class GroceryViewModel(
     private val recipes: RecipeBookRepository,
     private val plan: WeeklyPlanRepository,
     private val inventory: InventoryRepository,
-    private val kitchen: KitchenCalculator,
+    private val kitchen: KitchenLogic,
 ) : ViewModel() {
 
     private val messages = MessageHolder()

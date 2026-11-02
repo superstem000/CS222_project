@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.mealplannerapp.domain.InventoryData
 import com.example.mealplannerapp.fridgefirst.data.InventoryRepository
 import com.example.mealplannerapp.fridgefirst.data.stock
-import com.example.mealplannerapp.fridgefirst.domain.KitchenCalculator
+import com.example.mealplannerapp.fridgefirst.domain.KitchenLogic
 import com.example.mealplannerapp.fridgefirst.domain.formatAmount
 import com.example.mealplannerapp.fridgefirst.domain.parseQuantity
 import com.example.mealplannerapp.fridgefirst.ui.MessageHolder
@@ -38,7 +38,7 @@ data class InventoryForm(
 
 class InventoryViewModel(
     private val inventory: InventoryRepository,
-    private val kitchen: KitchenCalculator,
+    private val kitchen: KitchenLogic,
 ) : ViewModel() {
 
     private val messages = MessageHolder()

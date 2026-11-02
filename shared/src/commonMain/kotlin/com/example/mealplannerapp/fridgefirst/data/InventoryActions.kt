@@ -2,7 +2,7 @@ package com.example.mealplannerapp.fridgefirst.data
 
 import com.example.mealplannerapp.domain.InventoryData
 import com.example.mealplannerapp.fridgefirst.domain.InventoryChange
-import com.example.mealplannerapp.fridgefirst.domain.KitchenCalculator
+import com.example.mealplannerapp.fridgefirst.domain.KitchenLogic
 import kotlinx.coroutines.flow.first
 
 /**
@@ -13,7 +13,7 @@ suspend fun InventoryRepository.stock(
     name: String,
     quantity: Double,
     unit: String,
-    kitchen: KitchenCalculator
+    kitchen: KitchenLogic
 ): InventoryData {
     val existing = kitchen.mergeTarget(name, unit, observeItems().first())
     return if (existing != null) {
@@ -25,7 +25,7 @@ suspend fun InventoryRepository.stock(
     }
 }
 
-/** Applies the result of [KitchenCalculator.cookingChanges]. */
+/** Applies the result of [KitchenLogic.cookingChanges]. */
 suspend fun InventoryRepository.apply(changes: List<InventoryChange>) {
     for (change in changes) {
         when (change) {

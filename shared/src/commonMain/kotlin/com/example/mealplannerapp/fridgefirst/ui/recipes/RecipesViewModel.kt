@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.mealplannerapp.fridgefirst.data.InventoryRepository
 import com.example.mealplannerapp.fridgefirst.data.RecipeBookRepository
 import com.example.mealplannerapp.fridgefirst.data.WeeklyPlanRepository
-import com.example.mealplannerapp.fridgefirst.domain.KitchenCalculator
+import com.example.mealplannerapp.fridgefirst.domain.KitchenLogic
 import com.example.mealplannerapp.fridgefirst.domain.formatAmount
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -33,7 +33,7 @@ class RecipesViewModel(
     recipes: RecipeBookRepository,
     inventory: InventoryRepository,
     private val plan: WeeklyPlanRepository,
-    kitchen: KitchenCalculator,
+    kitchen: KitchenLogic,
 ) : ViewModel() {
 
     val uiState: StateFlow<RecipesUiState> = combine(

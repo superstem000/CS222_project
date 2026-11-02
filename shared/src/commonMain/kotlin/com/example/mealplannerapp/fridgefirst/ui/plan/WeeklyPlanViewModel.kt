@@ -7,7 +7,7 @@ import com.example.mealplannerapp.fridgefirst.data.RecipeBookRepository
 import com.example.mealplannerapp.fridgefirst.data.WeeklyPlanRepository
 import com.example.mealplannerapp.fridgefirst.data.apply
 import com.example.mealplannerapp.fridgefirst.domain.Coverage
-import com.example.mealplannerapp.fridgefirst.domain.KitchenCalculator
+import com.example.mealplannerapp.fridgefirst.domain.KitchenLogic
 import com.example.mealplannerapp.fridgefirst.ui.MessageHolder
 import com.example.mealplannerapp.fridgefirst.ui.UserMessage
 import kotlinx.coroutines.flow.SharingStarted
@@ -40,7 +40,7 @@ class WeeklyPlanViewModel(
     private val recipes: RecipeBookRepository,
     private val plan: WeeklyPlanRepository,
     private val inventory: InventoryRepository,
-    private val kitchen: KitchenCalculator,
+    private val kitchen: KitchenLogic,
 ) : ViewModel() {
 
     private val messages = MessageHolder()
