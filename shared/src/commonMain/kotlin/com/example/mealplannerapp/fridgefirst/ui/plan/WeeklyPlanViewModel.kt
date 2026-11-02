@@ -21,7 +21,6 @@ data class PlannedRecipeUi(
     val id: Long,
     val name: String,
     val coverage: Coverage,
-    /** Names of ingredients still missing; empty means ready to cook. */
     val missing: List<String>,
 )
 
@@ -29,7 +28,6 @@ data class RecommendationUi(val id: Long, val name: String, val coverage: Covera
 
 data class WeeklyPlanUiState(
     val planned: List<PlannedRecipeUi> = emptyList(),
-    /** Unplanned recipes, best match with current inventory first. */
     val recommendations: List<RecommendationUi> = emptyList(),
     val hasAnyRecipes: Boolean = false,
     val isLoading: Boolean = true,
@@ -83,7 +81,6 @@ class WeeklyPlanViewModel(
         viewModelScope.launch { plan.remove(recipeId) }
     }
 
-    /** Subtracts the recipe's ingredients from inventory and takes it off this week's plan. */
     fun markCooked(recipeId: Long) {
         viewModelScope.launch {
             val recipe = recipes.observeRecipe(recipeId).first() ?: return@launch

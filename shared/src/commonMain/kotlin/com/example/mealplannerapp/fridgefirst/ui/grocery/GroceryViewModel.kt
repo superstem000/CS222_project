@@ -22,7 +22,6 @@ data class GroceryLineUi(
     val key: String,
     val name: String,
     val amount: String,
-    /** e.g. "For Chicken Stir Fry, Fried Rice" */
     val forRecipes: String,
 )
 
@@ -33,10 +32,6 @@ data class GroceryUiState(
     val message: UserMessage? = null,
 )
 
-/**
- * Grocery list generated from this week's plan minus inventory. Checking off a line moves it into
- * inventory, which makes it drop off the list on the next emission.
- */
 class GroceryViewModel(
     private val recipes: RecipeBookRepository,
     private val plan: WeeklyPlanRepository,
@@ -66,7 +61,6 @@ class GroceryViewModel(
 
     fun checkOff(key: String) {
         viewModelScope.launch {
-            // Recompute from the source of truth rather than trusting possibly stale UI state.
             val item = kitchen.groceryList(planned.first(), inventory.observeItems().first())
                 .firstOrNull { it.key == key } ?: return@launch
             inventory.stock(item.displayName, item.totalQuantity, item.unit, kitchen)

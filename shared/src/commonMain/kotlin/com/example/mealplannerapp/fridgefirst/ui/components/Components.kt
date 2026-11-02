@@ -25,16 +25,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.mealplannerapp.fridgefirst.ui.UserMessage
 
-/** Standard padding for screen content lists. */
 val ScreenContentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 24.dp)
 
-/** Like [ScreenContentPadding] with room at the bottom so a floating action button never covers the last row. */
 val ScreenContentPaddingWithFab = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 96.dp)
 
-/**
- * Per-screen scaffold: title bar + snackbar host. Window insets are left to the app shell
- * (which owns the bottom navigation bar), so they aren't applied twice.
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FridgeFirstScaffold(
@@ -107,10 +101,7 @@ fun EmptyState(icon: ImageVector, title: String, body: String, modifier: Modifie
     }
 }
 
-/**
- * Shows [message] once as a snackbar, then reports it consumed. Keyed on the message id so the
- * same text can be shown twice in a row, and a newer message replaces one still on screen.
- */
+/** Shows [message] once as a snackbar. */
 @Composable
 fun MessageSnackbar(message: UserMessage?, snackbarHostState: SnackbarHostState, onShown: (Long) -> Unit) {
     LaunchedEffect(message?.id) {
@@ -121,6 +112,5 @@ fun MessageSnackbar(message: UserMessage?, snackbarHostState: SnackbarHostState,
     }
 }
 
-/** `supportingText` slot for a text field: shows [message] when there is one, otherwise nothing. */
 fun errorSupportingText(message: String?): (@Composable () -> Unit)? =
     if (message == null) null else { { Text(message) } }

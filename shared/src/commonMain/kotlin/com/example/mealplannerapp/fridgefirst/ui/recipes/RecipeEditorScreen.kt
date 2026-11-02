@@ -49,7 +49,6 @@ import com.example.mealplannerapp.fridgefirst.ui.components.ScreenContentPadding
 import com.example.mealplannerapp.fridgefirst.ui.components.SectionHeader
 import com.example.mealplannerapp.fridgefirst.ui.fridgeFirstViewModel
 
-/** [recipeId] == null creates a new recipe. [onDone] is called after save, delete or back. */
 @Composable
 fun RecipeEditorRoute(
     recipeId: Long?,
@@ -105,7 +104,6 @@ fun RecipeEditorScreen(
             TextButton(onClick = onSave, enabled = !state.isLoading) { Text("Save") }
         },
     ) { padding ->
-        // The bottom bar is hidden on this screen, so handle the nav bar and keyboard here.
         val contentModifier = Modifier
             .fillMaxSize()
             .padding(padding)

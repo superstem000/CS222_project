@@ -27,7 +27,6 @@ data class InventoryUiState(
     val message: UserMessage? = null,
 )
 
-/** The "add item" form. Exposed as its own StateFlow so text fields update synchronously. */
 data class InventoryForm(
     val name: String = "",
     val quantity: String = "",
@@ -61,7 +60,6 @@ class InventoryViewModel(
 
     fun onUnitChange(value: String) = _form.update { it.copy(unit = value) }
 
-    /** Validates the form; on success adds (or merges) the item and clears the form. */
     fun addItem() {
         val current = _form.value
         val name = current.name.trim()

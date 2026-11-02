@@ -12,8 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
-// "Fresh produce" palette: leafy green primary, carrot-orange tertiary, warm neutral surfaces.
-// Defined separately from the starter's ui/theme (left untouched).
 
 private val LightColors = lightColorScheme(
     primary = Color(0xFF386A20),
@@ -106,7 +104,6 @@ fun FridgeFirstTheme(
     )
 }
 
-/** Semantic colors for "have it" / "missing" so every screen uses the same ones. */
 object StockColors {
     val haveIt: Color @Composable get() = MaterialTheme.colorScheme.primary
     val missing: Color @Composable get() = MaterialTheme.colorScheme.error

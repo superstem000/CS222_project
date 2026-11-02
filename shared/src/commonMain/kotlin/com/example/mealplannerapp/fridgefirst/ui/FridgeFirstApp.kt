@@ -31,10 +31,7 @@ import com.example.mealplannerapp.fridgefirst.ui.recipes.RecipeEditorRoute
 import com.example.mealplannerapp.fridgefirst.ui.recipes.RecipesRoute
 import com.example.mealplannerapp.fridgefirst.ui.theme.FridgeFirstTheme
 
-/**
- * Root of the Fridge First UI: theme + bottom navigation + one NavHost.
- * Pass a different [container] to run the same screens against real repositories.
- */
+/** Root of the Fridge First UI. */
 @Composable
 fun FridgeFirstApp(container: FridgeFirstContainer = rememberInMemoryFridgeFirstContainer()) {
     CompositionLocalProvider(LocalFridgeFirstContainer provides container) {
@@ -46,7 +43,6 @@ fun FridgeFirstApp(container: FridgeFirstContainer = rememberInMemoryFridgeFirst
 
             Scaffold(
                 bottomBar = { if (showBottomBar) FridgeFirstBottomBar(navController, currentDestination) },
-                // Each screen's top app bar handles the status bar; the bottom bar handles the nav bar.
                 contentWindowInsets = WindowInsets(0, 0, 0, 0),
             ) { innerPadding ->
                 NavHost(
@@ -95,7 +91,6 @@ private fun FridgeFirstBottomBar(navController: NavHostController, currentDestin
     }
 }
 
-/** Standard bottom-nav behavior: one copy of each tab, state saved/restored when switching. */
 private fun NavHostController.navigateToTab(route: FridgeFirstRoute) {
     navigate(route) {
         popUpTo(graph.findStartDestination().id) { saveState = true }

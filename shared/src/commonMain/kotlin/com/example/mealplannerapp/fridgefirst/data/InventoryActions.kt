@@ -5,10 +5,7 @@ import com.example.mealplannerapp.fridgefirst.domain.InventoryChange
 import com.example.mealplannerapp.fridgefirst.domain.KitchenLogic
 import kotlinx.coroutines.flow.first
 
-/**
- * Adds an item to inventory, merging it into an existing row with the same ingredient and unit
- * (used by the Inventory screen's "Add" and by checking off grocery items).
- */
+/** Adds an item, merging into an existing row with the same name and unit. */
 suspend fun InventoryRepository.stock(
     name: String,
     quantity: Double,
@@ -25,7 +22,6 @@ suspend fun InventoryRepository.stock(
     }
 }
 
-/** Applies the result of [KitchenLogic.cookingChanges]. */
 suspend fun InventoryRepository.apply(changes: List<InventoryChange>) {
     for (change in changes) {
         when (change) {

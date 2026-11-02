@@ -9,13 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-/**
- * In-memory [InventoryRepository] backed by Andrew's `Inventory` draft class (used unmodified).
- * Adds a Flow on top so screens update automatically, and a mutex because `Inventory` isn't
- * thread-safe. Data lives only as long as the process.
- *
- * @param initialItems seed rows; their ids are ignored and reassigned by `Inventory`.
- */
+/** In-memory [InventoryRepository] wrapping the `Inventory` draft. */
 class InMemoryInventoryRepository(initialItems: List<InventoryData> = emptyList()) : InventoryRepository {
 
     private val inventory = Inventory()

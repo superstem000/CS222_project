@@ -7,11 +7,7 @@ import com.example.mealplannerapp.fridgefirst.domain.Coverage
 import com.example.mealplannerapp.fridgefirst.domain.InventoryChange
 import com.example.mealplannerapp.fridgefirst.domain.KitchenLogic
 
-/**
- * DEMO ONLY: just enough logic to make the screens interactive with sample data.
- * Items match only when name (ignoring case) AND unit are identical; no plurals, no unit
- * conversion, no servings scaling. Replace with the real implementations.
- */
+/** DEMO ONLY: matches identical name (ignoring case) and unit; no conversion. */
 class PlaceholderKitchenLogic : KitchenLogic {
 
     private fun key(name: String, unit: String) = name.trim().lowercase() + "|" + unit.trim().lowercase()

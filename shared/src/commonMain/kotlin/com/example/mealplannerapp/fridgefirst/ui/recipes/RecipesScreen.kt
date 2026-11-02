@@ -123,7 +123,6 @@ private fun RecipeCard(recipe: RecipeCardUi, onClick: () -> Unit, onTogglePlanne
     }
 }
 
-/** "You have everything" in green, or "Missing: …" in red. Shared with the Weekly Plan screen. */
 @Composable
 fun StockStatus(missing: List<String>, modifier: Modifier = Modifier) {
     Row(modifier, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {

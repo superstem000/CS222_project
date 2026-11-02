@@ -5,10 +5,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-/** A one-time message for a snackbar. The id makes repeated identical texts distinct. */
+/** One-time snackbar message. */
 data class UserMessage(val id: Long, val text: String)
 
-/** Holds the latest [UserMessage] for a ViewModel. Plain Kotlin so ViewModels stay Compose-free. */
 class MessageHolder {
     private var nextId = 1L
     private val _current = MutableStateFlow<UserMessage?>(null)
@@ -18,7 +17,6 @@ class MessageHolder {
         _current.value = UserMessage(nextId++, text)
     }
 
-    /** Clears the message only if it is still the one that was shown. */
     fun shown(id: Long) {
         _current.update { if (it?.id == id) null else it }
     }

@@ -3,7 +3,7 @@ package com.example.mealplannerapp.fridgefirst.domain
 import kotlin.math.abs
 import kotlin.math.roundToLong
 
-/** "2.0" -> "2", "0.333333" -> "0.33". Common code has no String.format, so this is done by hand. */
+/** 2.0 -> "2", 0.333 -> "0.33" */
 fun formatQuantity(quantity: Double): String {
     val hundredths = (quantity * 100).roundToLong()
     val whole = hundredths / 100
@@ -16,10 +16,8 @@ fun formatQuantity(quantity: Double): String {
     }
 }
 
-/** "3 pcs", "100 g", or just "2" when there is no unit. */
 fun formatAmount(quantity: Double, unit: String): String =
     listOf(formatQuantity(quantity), unit.trim()).filter { it.isNotEmpty() }.joinToString(" ")
 
-/** Parses user input like "2", "1.5" or "1,5". Returns null for blank/invalid/non-positive input. */
 fun parseQuantity(text: String): Double? =
     text.trim().replace(',', '.').toDoubleOrNull()?.takeIf { it > 0.0 && it.isFinite() }

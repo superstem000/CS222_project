@@ -28,14 +28,10 @@ data class RecipeEditorUiState(
     val nameError: String? = null,
     val servingsError: String? = null,
     val ingredientsError: String? = null,
-    /** Set once the recipe was saved or deleted; the screen navigates back. */
     val isFinished: Boolean = false,
 )
 
-/**
- * Create or edit one recipe. [recipeId] == null means a new recipe.
- * State is a single MutableStateFlow (no combine) so text fields update synchronously.
- */
+/** Creates or edits a recipe; [recipeId] == null means new. */
 class RecipeEditorViewModel(
     private val recipeId: Long?,
     private val recipes: RecipeBookRepository,
@@ -45,7 +41,6 @@ class RecipeEditorViewModel(
     private val _uiState = MutableStateFlow(RecipeEditorUiState(isNew = recipeId == null, isLoading = recipeId != null))
     val uiState: StateFlow<RecipeEditorUiState> = _uiState.asStateFlow()
 
-    /** The stored recipe being edited, kept so fields the editor doesn't show (nutrition, tags) survive a save. */
     private var original: Recipe? = null
 
     init {
@@ -129,7 +124,6 @@ class RecipeEditorViewModel(
         }
     }
 
-    /** Deletes the recipe and removes it from the weekly plan. */
     fun delete() {
         val id = original?.id ?: return
         viewModelScope.launch {

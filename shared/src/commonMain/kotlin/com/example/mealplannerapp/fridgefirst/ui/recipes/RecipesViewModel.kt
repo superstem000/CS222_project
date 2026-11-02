@@ -19,7 +19,6 @@ data class RecipeCardUi(
     val name: String,
     val servings: Int,
     val ingredientSummary: String,
-    /** Names of ingredients not fully covered by inventory; empty means "you have everything". */
     val missing: List<String>,
     val isPlanned: Boolean,
 )

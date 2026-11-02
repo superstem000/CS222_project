@@ -5,7 +5,7 @@ import com.example.mealplannerapp.data.local.Recipe
 import com.example.mealplannerapp.data.local.RecipeWithIngredients
 import com.example.mealplannerapp.domain.InventoryData
 
-/** Demo data from the UI prototype, so the app has something to show before the real DB exists. */
+/** Sample data for the demo. */
 object SampleData {
 
     val inventory: List<InventoryData> = listOf(
@@ -41,7 +41,6 @@ object SampleData {
     fun ingredient(name: String, quantity: Double, unit: String) =
         Ingredient(recipeId = 0, name = name, quantity = quantity, unit = unit)
 
-    /** Builds an unsaved recipe (id 0). Nutrition fields aren't used by Fridge First yet, so they are 0. */
     fun recipe(name: String, servings: Int, vararg ingredients: Ingredient) = RecipeWithIngredients(
         recipe = newRecipe(name, servings),
         ingredients = ingredients.toList()

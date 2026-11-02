@@ -10,14 +10,13 @@ val LocalFridgeFirstContainer = staticCompositionLocalOf<FridgeFirstContainer> {
     error("No FridgeFirstContainer provided. Wrap the UI in FridgeFirstApp().")
 }
 
-/** Creates (or returns the existing) ViewModel for the current screen, built from the container. */
 @Composable
 inline fun <reified VM : ViewModel> fridgeFirstViewModel(crossinline create: (FridgeFirstContainer) -> VM): VM {
     val container = LocalFridgeFirstContainer.current
     return viewModel { create(container) }
 }
 
-/** Keeps the in-memory container alive across configuration changes (e.g. rotation). */
+/** Keeps the in-memory container across rotation. */
 private class FridgeFirstContainerHolder : ViewModel() {
     val container: FridgeFirstContainer = FridgeFirstContainer.inMemory()
 }

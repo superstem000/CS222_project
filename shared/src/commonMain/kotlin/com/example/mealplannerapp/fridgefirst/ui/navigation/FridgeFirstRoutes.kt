@@ -8,7 +8,6 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
 import kotlinx.serialization.Serializable
 
-/** Type-safe Navigation Compose routes for Fridge First. */
 @Serializable
 sealed interface FridgeFirstRoute {
     @Serializable data object Inventory : FridgeFirstRoute
@@ -16,7 +15,6 @@ sealed interface FridgeFirstRoute {
     @Serializable data object WeeklyPlan : FridgeFirstRoute
     @Serializable data object Grocery : FridgeFirstRoute
 
-    /** [recipeId] == [NEW_RECIPE] creates a new recipe. (Non-null so it works with every NavType.) */
     @Serializable data class RecipeEditor(val recipeId: Long = NEW_RECIPE) : FridgeFirstRoute {
         companion object {
             const val NEW_RECIPE = -1L

@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-/** In-memory [RecipeBookRepository]. Assigns ids like Room's autoGenerate would. */
+/** In-memory [RecipeBookRepository]. */
 class InMemoryRecipeBookRepository(initialRecipes: List<RecipeWithIngredients> = emptyList()) : RecipeBookRepository {
 
     private val mutex = Mutex()

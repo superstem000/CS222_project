@@ -4,7 +4,7 @@ import com.example.mealplannerapp.data.local.RecipeWithIngredients
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 
-/** The planned recipes in plan order. Ids whose recipe was deleted are skipped. */
+/** Planned recipes, in plan order. */
 fun plannedRecipes(
     plan: WeeklyPlanRepository,
     recipes: RecipeBookRepository

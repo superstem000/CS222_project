@@ -10,10 +10,7 @@ import com.example.mealplannerapp.fridgefirst.data.fake.PlaceholderKitchenLogic
 import com.example.mealplannerapp.fridgefirst.data.fake.SampleData
 import com.example.mealplannerapp.fridgefirst.domain.KitchenLogic
 
-/**
- * Everything the Fridge First screens depend on. For the UI demo these are all in-memory fakes;
- * this is the one place to swap in the real database and feature logic later.
- */
+/** Screen dependencies. Swap the fakes for real implementations here. */
 class FridgeFirstContainer(
     val inventoryRepository: InventoryRepository,
     val recipeBookRepository: RecipeBookRepository,
@@ -22,7 +19,6 @@ class FridgeFirstContainer(
 ) {
 
     companion object {
-        /** Demo setup: in-memory fakes, optionally seeded with sample data. */
         fun inMemory(withSampleData: Boolean = true) = FridgeFirstContainer(
             inventoryRepository = InMemoryInventoryRepository(if (withSampleData) SampleData.inventory else emptyList()),
             recipeBookRepository = InMemoryRecipeBookRepository(if (withSampleData) SampleData.recipes else emptyList()),
