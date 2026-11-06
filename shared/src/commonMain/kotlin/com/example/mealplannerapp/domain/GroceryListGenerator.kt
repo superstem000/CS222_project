@@ -4,7 +4,7 @@ import com.example.mealplannerapp.data.repository.PlannedMealDetail
 
 /**
  * Aggregates ingredients across planned meals. Ingredients only merge when both their
- * (trimmed, lowercased) name AND unit match — mismatched units for the same ingredient name
+ * normalized name (IngredientNames.normalize: "Eggs" == "egg") AND unit match — mismatched units for the same ingredient name
  * are intentionally kept as separate lines since no unit-conversion table exists (v1 scope).
  */
 object GroceryListGenerator {
@@ -29,7 +29,7 @@ object GroceryListGenerator {
                 }
 
                 for (ingredient in recipeDetail.ingredients) {
-                    val normalizedName = ingredient.name.trim().lowercase()
+                    val normalizedName = IngredientNames.normalize(ingredient.name)
                     val normalizedUnit = ingredient.unit.trim().lowercase()
                     if (normalizedName.isEmpty()) continue
 
@@ -52,7 +52,7 @@ object GroceryListGenerator {
 
             // Also add standalone meal ingredients
             for (mealIngredient in detail.mealIngredients) {
-                val normalizedName = mealIngredient.name.trim().lowercase()
+                val normalizedName = IngredientNames.normalize(mealIngredient.name)
                 val normalizedUnit = mealIngredient.unit.trim().lowercase()
                 if (normalizedName.isEmpty()) continue
 

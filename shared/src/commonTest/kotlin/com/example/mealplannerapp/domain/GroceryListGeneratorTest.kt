@@ -105,6 +105,31 @@ class GroceryListGeneratorTest {
 
         assertEquals(2, result.size)
     }
+
+    @Test
+    fun mergesPluralAndSingularNames() {
+        val recipe = recipe(id = 1, name = "Omelette", servings = 1)
+        val details = listOf(
+            PlannedMealDetail(
+                plannedMeal = plannedMeal(),
+                recipes = listOf(
+                    RecipeDetail(
+                        recipe = recipe,
+                        ingredients = listOf(
+                            Ingredient(recipeId = 1, name = "Eggs", quantity = 2.0, unit = ""),
+                            Ingredient(recipeId = 1, name = "egg", quantity = 1.0, unit = "")
+                        ),
+                        servings = 1.0
+                    )
+                )
+            )
+        )
+
+        val result = GroceryListGenerator.generate(details)
+
+        assertEquals(1, result.size)
+        assertApproxEquals(3.0, result.single().totalQuantity)
+    }
 }
 
 private fun assertApproxEquals(expected: Double, actual: Double, tolerance: Double = 0.0001) {
