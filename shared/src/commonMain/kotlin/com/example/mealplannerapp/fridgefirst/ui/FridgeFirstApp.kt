@@ -33,7 +33,7 @@ import com.example.mealplannerapp.fridgefirst.ui.theme.FridgeFirstTheme
 
 /** Root of the Fridge First UI. */
 @Composable
-fun FridgeFirstApp(container: FridgeFirstContainer = rememberInMemoryFridgeFirstContainer()) {
+fun FridgeFirstApp(container: FridgeFirstContainer) {
     CompositionLocalProvider(LocalFridgeFirstContainer provides container) {
         FridgeFirstTheme {
             val navController = rememberNavController()

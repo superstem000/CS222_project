@@ -4,6 +4,8 @@ import com.example.mealplannerapp.data.local.Ingredient
 import com.example.mealplannerapp.data.local.Recipe
 import com.example.mealplannerapp.data.local.RecipeWithIngredients
 import com.example.mealplannerapp.domain.InventoryData
+import com.example.mealplannerapp.fridgefirst.data.RecipeBookRepository
+import kotlinx.coroutines.flow.first
 
 /** Sample data for the demo. */
 object SampleData {
@@ -35,6 +37,13 @@ object SampleData {
             ingredient("Rice", 2.0, "cup"), ingredient("Eggs", 2.0, "pcs"), ingredient("Soy sauce", 1.0, "tbsp")
         ),
     )
+
+    /** Adds the sample recipes when there are no recipes yet. */
+    suspend fun seedRecipesIfEmpty(repository: RecipeBookRepository) {
+        if (repository.observeRecipes().first().isEmpty()) {
+            recipes.forEach { repository.save(it.recipe, it.ingredients) }
+        }
+    }
 
     fun item(name: String, quantity: Double, unit: String) = InventoryData(id = 0, name = name, quantity = quantity, unit = unit)
 
